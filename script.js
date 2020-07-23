@@ -4,7 +4,7 @@ let string = document.getElementById("string").innerHTML = "Hello";
 let reversedString = document.getElementById("reversedString").innerHTML = reverseString(string);
 
 
-// takes a string and reverse it
+// 1.	Reverse a string
 function reverseString(string)
 {
     let reversed="";
@@ -16,7 +16,7 @@ function reverseString(string)
 }
 
 
-//Capitalize the firs letter of each word
+//2.	Capitalize letter
 
 let nonCapitalized = document.getElementById("capitalize").innerHTML = "hello world" 
 let capitalized = document.getElementById("capitalized").innerHTML = capitalizeFirstLetter(nonCapitalized);
@@ -39,4 +39,32 @@ function capitalizeFirstLetter(nonCapitalized){
             }
         }
     return capitalized;
+}
+
+
+//3.	Compress a string of characters
+
+let nonCompressed = document.getElementById("nonCompressed").innerHTML = "aaabbbbbccccaacccbbbaaabbbaaa";
+let compressed = document.getElementById("compressed").innerHTML = compressString(nonCompressed);
+
+function compressString(nonCompressed) {
+    
+    let compressed = "";
+    let counter = 1;
+    let tempString = "";
+
+    for (let index = 0; index <= nonCompressed.length; index++) {
+            
+        if (nonCompressed[index] == nonCompressed[index + 1]) {
+            counter++;
+            tempString += nonCompressed[index];              
+        }
+        else if (nonCompressed[index] !== nonCompressed[index + 1]){
+            compressed += counter.toString();
+            counter = 1;
+            compressed += tempString[0];
+            tempString = "";
+        }
+    }
+    return compressed;
 }
