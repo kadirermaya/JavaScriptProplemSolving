@@ -5,11 +5,9 @@ let reversedString = document.getElementById("reversedString").innerHTML = rever
 
 
 // 1.	Reverse a string
-function reverseString(string)
-{
-    let reversed="";
-    for (let index = string.length-1; index >= 0; index--) 
-    {
+function reverseString(string) {
+    let reversed = "";
+    for (let index = string.length - 1; index >= 0; index--) {
         reversed += string[index];
     }
     return reversed;
@@ -18,29 +16,27 @@ function reverseString(string)
 
 //2.	Capitalize letter
 
-let nonCapitalized = document.getElementById("capitalize").innerHTML = "hello world" 
+let nonCapitalized = document.getElementById("capitalize").innerHTML = "hello world"
 let capitalized = document.getElementById("capitalized").innerHTML = capitalizeFirstLetter(nonCapitalized);
 
-function capitalizeFirstLetter(nonCapitalized){
+function capitalizeFirstLetter(nonCapitalized) {
     let capitalized = "";
-    for (let index = 0; index <= nonCapitalized.length-1; index++) 
-        {
-            if(index == 0){
-                capitalized += nonCapitalized[index].toUpperCase();
-            }
-            else if (nonCapitalized[index] === " "){
-                capitalized += " ";
-                capitalized += nonCapitalized[index + 1].toUpperCase();
-                index++;
-            }
-            else{
-
-                capitalized += nonCapitalized[index];
-            }
+    for (let index = 0; index <= nonCapitalized.length - 1; index++) {
+        if (index == 0) {
+            capitalized += nonCapitalized[index].toUpperCase();
         }
+        else if (nonCapitalized[index] === " ") {
+            capitalized += " ";
+            capitalized += nonCapitalized[index + 1].toUpperCase();
+            index++;
+        }
+        else {
+
+            capitalized += nonCapitalized[index];
+        }
+    }
     return capitalized;
 }
-
 
 //3.	Compress a string of characters
 
@@ -48,18 +44,18 @@ let nonCompressed = document.getElementById("nonCompressed").innerHTML = "aaabbb
 let compressed = document.getElementById("compressed").innerHTML = compressString(nonCompressed);
 
 function compressString(nonCompressed) {
-    
+
     let compressed = "";
     let counter = 1;
     let tempString = "";
 
     for (let index = 0; index <= nonCompressed.length; index++) {
-            
+
         if (nonCompressed[index] == nonCompressed[index + 1]) {
             counter++;
-            tempString += nonCompressed[index];              
+            tempString += nonCompressed[index];
         }
-        else if (nonCompressed[index] !== nonCompressed[index + 1]){
+        else if (nonCompressed[index] !== nonCompressed[index + 1]) {
             compressed += counter.toString();
             counter = 1;
             compressed += tempString[0];
@@ -67,4 +63,40 @@ function compressString(nonCompressed) {
         }
     }
     return compressed;
+}
+
+//4.	Palindrome
+
+let userInput = document.getElementById("palindrome").innerHTML = getUserInput();
+let ifPolindrome = document.getElementById("ifPalindrome").innerHTML = checksPolindrome(userInput);
+
+function ifWordPolindrome(userInput) {
+    
+    let downCounter = userInput.length-1;
+    let result = "";
+    for (let index = 0; index <= userInput.length-1; index++) {
+        if(userInput[index] === userInput[downCounter])
+        {
+            result += userInput[downCounter];
+            downCounter--;
+        }
+        
+    }
+    return userInput;
+}
+
+function getUserInput() {
+    let userInput = window.prompt("Enter the word I can check if Palindrome.");
+    return userInput;
+}
+
+function checksPolindrome(userInput) {
+    let checkedWord = ifWordPolindrome(userInput);
+    if (userInput === checkedWord) {
+        alert("Yayyyy Palindrome")
+    }
+    else {
+        alert("it is not a Palindrome")
+    }
+    return checkedWord;
 }
