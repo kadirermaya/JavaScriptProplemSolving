@@ -67,8 +67,7 @@ function compressString(nonCompressed) {
 
 //4.	Palindrome
 
-let userInput = document.getElementById("palindrome").innerHTML = getUserInput();
-let ifPolindrome = document.getElementById("ifPalindrome").innerHTML = checksPolindrome(userInput);
+let userInput = document.getElementById("palindrome").innerHTML = ifWordPolindrome(getUserInput());
 
 function ifWordPolindrome(userInput) {
     
@@ -82,6 +81,12 @@ function ifWordPolindrome(userInput) {
         }
         
     }
+            if (result == userInput){
+                alert("Yayyyy Palindrome")
+            }
+            else{
+                alert("it is not a Palindrome")
+            }
     return userInput;
 }
 
@@ -90,13 +95,21 @@ function getUserInput() {
     return userInput;
 }
 
-function checksPolindrome(userInput) {
-    let checkedWord = ifWordPolindrome(userInput);
-    if (userInput === checkedWord) {
-        alert("Yayyyy Palindrome")
+
+
+function primeNumbers(){
+    
+    for (var counter = 0; counter <= 100; counter++) {
+
+        var notPrime = false;
+        for (var i = 2; i <= counter; i++) {
+            if (counter%i===0 && i!==counter) {
+                notPrime = true;
+            }
+        }
+        if (notPrime === false) {
+                    console.log(counter);
+        }
     }
-    else {
-        alert("it is not a Palindrome")
-    }
-    return checkedWord;
 }
+primeNumbers();
